@@ -23,18 +23,18 @@ function vih_viggo_feeds_importer_default() {
         'auto_detect_feeds' => 0,
         'use_pubsubhubbub' => 0,
         'designated_hub' => '',
+        'request_timeout' => NULL,
       ),
     ),
     'parser' => array(
-      'plugin_key' => 'ParserIcalCreator',
+      'plugin_key' => 'DateIcalIcalcreatorParser',
       'config' => array(),
     ),
     'processor' => array(
       'plugin_key' => 'FeedsNodeProcessor',
       'config' => array(
-        'content_type' => 'vih_calendar',
-        'expire' => '-1',
-        'author' => '3',
+        'expire' => '31536000',
+        'author' => '1',
         'mappings' => array(
           0 => array(
             'source' => 'summary',
@@ -64,6 +64,9 @@ function vih_viggo_feeds_importer_default() {
         ),
         'update_existing' => '2',
         'input_format' => 'plain_text',
+        'bundle' => 'vih_calendar',
+        'authorize' => 1,
+        'skip_hash_check' => 0,
       ),
     ),
     'content_type' => '',
