@@ -2,7 +2,6 @@ name = VIH Viggo
 description = Feed importer and field formatter to integrate with Viggo Intranet from http://hvemerviggo.dk
 core = 7.x
 package = VIH
-php = 5.2.4
 version = 7.x-0.10
 project = vih_viggo
 dependencies[] = ctools

@@ -65,7 +65,7 @@ function vih_viggo_feeds_importer_default() {
         'update_existing' => '2',
         'input_format' => 'plain_text',
         'bundle' => 'vih_calendar',
-        'authorize' => 1,
+        'authorize' => 0,
         'skip_hash_check' => 0,
       ),
     ),
