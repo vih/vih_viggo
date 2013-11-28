@@ -9,6 +9,7 @@ dependencies[] = date
 dependencies[] = date_ical
 dependencies[] = features
 dependencies[] = feeds
+dependencies[] = feeds_ui
 dependencies[] = link
 dependencies[] = strongarm
 dependencies[] = vih_calendar
