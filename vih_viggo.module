@@ -38,7 +38,7 @@ function vih_viggo_field_formatter_view($entity_type, $entity, $field, $instance
     $text = str_replace("Beskrivelse:", '', $text);
     $text = strstr($text, 'Opdateret: ', TRUE);
     // Assign it to the #markup of the element.
-    $element[0]['#markup'] = check_markup($text, 'wysiwyg');
+    $element[0]['#markup'] = check_markup($text);
   }
   return $element;
 }
