@@ -6,14 +6,11 @@
 
 include_once 'vih_viggo.features.inc';
 
-
-
-
 /**
  * Implements hook_field_access().
  */
 function vih_viggo_field_access($op, $field, $entity_type, $entity, $account) {
-  if ($field['field_name'] == 'viggo_imported_text') {
+  if ($field['field_name'] == 'viggo_imported_text' AND $op == 'edit') {
     // Only allow admins to edit field value.
     return user_access('bypass node access', $account);
   }
