@@ -43,7 +43,7 @@ function vih_viggo_feeds_importer_default() {
           ),
           1 => array(
             'source' => 'description',
-            'target' => 'body',
+            'target' => 'viggo_imported_text',
             'unique' => FALSE,
           ),
           2 => array(
@@ -63,7 +63,7 @@ function vih_viggo_feeds_importer_default() {
           ),
         ),
         'update_existing' => '2',
-        'input_format' => 'plain_text',
+        'input_format' => 'viggo_imported_text',
         'bundle' => 'vih_calendar',
         'authorize' => 0,
         'skip_hash_check' => 0,

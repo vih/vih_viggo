@@ -6,10 +6,19 @@
 
 include_once 'vih_viggo.features.inc';
 
+
+
+
 /**
- * @file
- * Adds formatter to display calendar items for Viggo properly
+ * Implements hook_field_access().
  */
+function vih_viggo_field_access($op, $field, $entity_type, $entity, $account) {
+  if ($field['field_name'] == 'viggo_imported_text') {
+    // Only allow admins to edit field value.
+    return user_access('bypass node access', $account);
+  }
+  return TRUE;
+}
 
 /**
  * Implements hook_field_formatter_info().
@@ -20,7 +29,7 @@ function vih_viggo_field_formatter_info() {
   return array(
     'vih_viggo_formatter' => array(
       'label' => t('Viggo Calendar Description'),
-      'field types' => array('text_with_summary', 'text_long'),
+      'field types' => array('text_long'),
     ),
   );
 }
@@ -38,7 +47,8 @@ function vih_viggo_field_formatter_view($entity_type, $entity, $field, $instance
     $text = str_replace("Beskrivelse:", '', $text);
     $text = strstr($text, 'Opdateret: ', TRUE);
     // Assign it to the #markup of the element.
-    $element[0]['#markup'] = strip_tags($text);
+    $element[0]['#markup'] = check_markup($text, 'viggo_imported_text');
   }
   return $element;
 }
+
