@@ -6,32 +6,7 @@
 
 function vih_viggo_install() {
   // Add text format if it doesn't exist.
-  if (!filter_format_load('viggo_imported_text')) {
-    $format = (object) array(
-      'format' => 'viggo_imported_text',
-      'name' => 'Viggo Imported Text',
-      'weight' => 0,
-      'filters' => array(
-        'filter_autoop' => array(
-          'weight' => -10,
-          'status' => 1,
-        ),
-        'filter_url' => array(
-          'weight' => 1,
-          'status' => 1,
-        ),
-        'filter_html' => array(
-          'weight' => 10,
-          'status' => 1,
-        ),
-        'filter_htmlcorrector' => array(
-          'weight' => 40,
-          'status' => 1,
-        ),
-      ),
-    );
-    filter_format_save($format);
-  }
+  _vih_viggo_text_format();
   // Adds Viggo field to VIH Calendar
   _vih_viggo_create_field('viggo_imported_text', 'node', 'vih_calendar', 'Viggo Text', 'Holds imported text from Viggo. Will be overwritten with values from Viggo when syncing.');
 }
@@ -43,35 +18,7 @@ function vih_viggo_install() {
  */
 function vih_viggo_update_7000() {
   // Add text format if it doesn't exist.
-  if (!filter_format_load('viggo_imported_text')) {
-    $format = (object) array(
-      'format' => 'viggo_imported_text',
-      'name' => 'Viggo Imported Text',
-      'weight' => 0,
-      'filters' => array(
-        'filter_html' => array(
-          'weight' => -10,
-          'status' => 1,
-          'settings' => array(
-            'allowed_html' => '<b><strong>',
-          ),
-        ),
-        'filter_autop' => array(
-          'weight' => -5,
-          'status' => 1,
-        ),
-        'filter_url' => array(
-          'weight' => 1,
-          'status' => 1,
-        ),
-        'filter_htmlcorrector' => array(
-          'weight' => 40,
-          'status' => 1,
-        ),
-      ),
-    );
-    filter_format_save($format);
-  }
+  _vih_viggo_text_format();
   _vih_viggo_create_field('viggo_imported_text', 'node', 'vih_calendar', 'Viggo Text', 'Holds imported text from Viggo. Will be overwritten with values from Viggo when syncing.');
 }
 
@@ -113,5 +60,38 @@ function _vih_viggo_create_field($field_name, $entity_type, $bundle_name, $label
       ),
     );
     field_create_instance($instance);
+  }
+}
+
+/**
+ * Utility function to create fields.
+ */
+function _vih_viggo_text_format() {
+  // Add text format if it doesn't exist.
+  if (!filter_format_load('viggo_imported_text')) {
+    $format = (object) array(
+      'format' => 'viggo_imported_text',
+      'name' => 'Viggo Imported Text',
+      'weight' => 0,
+      'filters' => array(
+        'filter_autoop' => array(
+          'weight' => -10,
+          'status' => 1,
+        ),
+        'filter_url' => array(
+          'weight' => 1,
+          'status' => 1,
+        ),
+        'filter_html' => array(
+          'weight' => 10,
+          'status' => 1,
+        ),
+        'filter_htmlcorrector' => array(
+          'weight' => 40,
+          'status' => 1,
+        ),
+      ),
+    );
+    filter_format_save($format);
   }
 }
