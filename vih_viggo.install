@@ -4,6 +4,9 @@
  * @file
  */
 
+/**
+ * Implements hook_install().
+ */
 function vih_viggo_install() {
   // Add text format if it doesn't exist.
   _vih_viggo_text_format();
