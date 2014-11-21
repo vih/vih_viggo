@@ -24,6 +24,7 @@ function vih_viggo_feeds_importer_default() {
         'use_pubsubhubbub' => 0,
         'designated_hub' => '',
         'request_timeout' => NULL,
+        'auto_scheme' => 'http',
       ),
     ),
     'parser' => array(
@@ -37,27 +38,27 @@ function vih_viggo_feeds_importer_default() {
         'author' => '1',
         'mappings' => array(
           0 => array(
-            'source' => 'summary',
+            'source' => 'SUMMARY',
             'target' => 'title',
             'unique' => FALSE,
           ),
           1 => array(
-            'source' => 'description',
+            'source' => 'DESCRIPTION',
             'target' => 'viggo_imported_text',
             'unique' => FALSE,
           ),
           2 => array(
-            'source' => 'dtstart',
+            'source' => 'DTSTART',
             'target' => 'field_date:start',
             'unique' => FALSE,
           ),
           3 => array(
-            'source' => 'dtend',
+            'source' => 'DTEND',
             'target' => 'field_date:end',
             'unique' => FALSE,
           ),
           4 => array(
-            'source' => 'uid',
+            'source' => 'UID',
             'target' => 'guid',
             'unique' => 1,
           ),
