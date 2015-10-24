@@ -17,7 +17,6 @@ function vih_viggo_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'viggo_imported_text',
-    'foreign keys' => array(),
     'indexes' => array(
       'format' => array(
         0 => 'format',
