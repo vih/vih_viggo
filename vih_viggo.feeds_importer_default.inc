@@ -20,18 +20,21 @@ function vih_viggo_feeds_importer_default() {
     'fetcher' => array(
       'plugin_key' => 'FeedsHTTPFetcher',
       'config' => array(
+        'accept_invalid_cert' => 1,
         'auto_detect_feeds' => 0,
         'use_pubsubhubbub' => 0,
         'designated_hub' => '',
         'request_timeout' => NULL,
         'auto_scheme' => 'http',
+        'request_timeout' => 15
       ),
     ),
     'parser' => array(
       'plugin_key' => 'DateiCalFeedsParser',
       'config' => array(
         'indefinite_count' => '52',
-        'indefinite_message_display' => TRUE,
+        'indefinite_message_display' => 1,
+        'skip_days' => 30,
         'until_not_utc' => FALSE,
         'skip_days' => NULL,
       ),
@@ -69,6 +72,7 @@ function vih_viggo_feeds_importer_default() {
           ),
         ),
         'update_existing' => '2',
+        'update_non_existent' => 'skip',
         'input_format' => 'viggo_imported_text',
         'bundle' => 'vih_calendar',
         'authorize' => 0,
